@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "empty run",
+            "label": "test",
             "type": "shell",
-            "command": "go run cmd/garden/main.go",
+            "command": "go test ./...",
             "problemMatcher": [
                 "$go"
             ]
