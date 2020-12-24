@@ -1,18 +1,21 @@
 # https://taskfile.dev
 
-version: '3'
+version: "3"
 
 vars:
   GREETING: Hello, World!
 
 tasks:
   build:
+    desc: build
     cmds:
-    - cmd: go build -o garden ./cmd/garden/main.go
+      - cmd: go build -o garden ./cmd/garden/main.go
   clean:
+    desc: clean
     silent: true
     cmds:
       - rm garden || true
   test:
+    desc: test
     cmds:
-    - go test ./...
+      - go test ./...

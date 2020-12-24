@@ -3,12 +3,14 @@ module github.com/klauern/repo-gardener
 go 1.15
 
 require (
+	github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6 // indirect
 	github.com/bitfield/script v0.18.0
-	github.com/cli/cli v0.12.0
+	github.com/cli/cli v1.4.0
 	github.com/henvic/httpretty v0.0.6 // indirect
 	github.com/rs/zerolog v1.19.0
-	github.com/shurcooL/githubv4 v0.0.0-20200802174311-f27d2ca7f6d5 // indirect
+	github.com/ugorji/go v1.1.4 // indirect
 	github.com/urfave/cli/v2 v2.2.0
+	github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77 // indirect
 	golang.org/x/net v0.0.0-20200904194848-62affa334b73 // indirect
 	golang.org/x/xerrors v0.0.0-20200806184451-1a77d5e9f316 // indirect
 )
