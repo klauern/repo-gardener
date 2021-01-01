@@ -5,12 +5,20 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/cli/cli/api"
+	"github.com/google/go-github/v33/github" // with go modules enabled (GO111MODULE=on or outside GOPATH)
 )
 
+type GardenClient struct {
+	GitHub *github.Client
+}
+
+func NewGardenClient(token string) *GardenClient {
+	return &GardenClient{}
+}
+
 type PullRequester struct {
-	GitHubPR      *api.PullRequest
-	GitHubRepo    *api.Repository
+	GitHubPR      *github.PullRequest
+	GitHubRepo    *github.Repository
 	JiraTicketIDs []string
 	Reason        string
 }

@@ -1,15 +1,16 @@
 package gardener
 
 import (
+	"reflect"
 	"testing"
 
-	"github.com/cli/cli/api"
+	"github.com/google/go-github/v33/github"
 )
 
 func TestPullRequester_DescriptionString(t *testing.T) {
 	type fields struct {
-		GitHubPR      *api.PullRequest
-		GitHubRepo    *api.Repository
+		GitHubPR      *github.PullRequest
+		GitHubRepo    *github.Repository
 		JiraTicketIDs []string
 		Reason        string
 	}
@@ -84,6 +85,26 @@ some reason
 			}
 			if got != tt.want {
 				t.Errorf("PullRequester.DescriptionString() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestNewGardenClient(t *testing.T) {
+	type args struct {
+		token string
+	}
+	tests := []struct {
+		name string
+		args args
+		want *GardenClient
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := NewGardenClient(tt.args.token); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("NewGardenClient() = %v, want %v", got, tt.want)
 			}
 		})
 	}
