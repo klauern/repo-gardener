@@ -54,6 +54,13 @@ func (g *GardenConfig) Template(path string, fs afero.Fs) error {
 	if err != nil {
 		return fmt.Errorf("parsing GardenConfigTemplate: %w", err)
 	}
+	exists, err := afero.Exists(fs, path)
+	if err != nil {
+		return fmt.Errorf("Error getting file status: %w", err)
+	}
+	if exists {
+		return fmt.Errorf("File exists already")
+	}
 	file, err := fs.Create(path)
 	if err != nil {
 		return fmt.Errorf("creating template file: %w", err)

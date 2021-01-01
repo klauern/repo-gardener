@@ -28,6 +28,8 @@ func TestNewGardenConfig(t *testing.T) {
 
 func TestGardenConfig_Template(t *testing.T) {
 	testFs := afero.NewMemMapFs()
+	fsWithConfig := afero.NewMemMapFs()
+	fsWithConfig.Create("garden.yaml")
 	type fields struct {
 		Name        string
 		PullRequest *pullRequest
@@ -50,6 +52,14 @@ func TestGardenConfig_Template(t *testing.T) {
 				fs:   testFs,
 			},
 			wantErr: false,
+		},
+		{
+			name: "file already created",
+			args: args{
+				path: "garden.yaml",
+				fs:   fsWithConfig,
+			},
+			wantErr: true,
 		},
 	}
 	for _, tt := range tests {
